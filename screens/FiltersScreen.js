@@ -17,6 +17,7 @@ import ConfirmButton from '../components/presentational/ConfirmButton';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Row from '../components/presentational/Row';
 import EntityIconList from '../components/container/EntityIconList';
+import ErrorText from '../components/presentational/ErrorText';
 
 let isHidden = true
 
@@ -113,9 +114,11 @@ class FiltersScreen extends React.Component {
               <TopPaddingWrapper>
                 <SearchBar q={this.state.q} updateSearch={this.updateSearch} fetchFunc={this.fetchLocations}/>
               </TopPaddingWrapper>
+
               {success && data.length >= 1 && (
                 <LocationFlatList locations={data} handleLocationSelection={this.handleLocationSelection} currentSelection={this.state.selectedLocation.id}/>
               )}
+
               {waiting && (
                 <TopPaddingWrapper>
                   <ActivityIndicator size="large" color={R.colors.secondary}/>
@@ -123,8 +126,11 @@ class FiltersScreen extends React.Component {
               )}
 
               {error && (
-                <Text>Error while fetching locations</Text>
+                <TopPaddingWrapper>
+                  <ErrorText text={error}/>
+                </TopPaddingWrapper>
               )}
+              
             </PaddingWrapper>
           </Animated.View>
         </ScreenContainer>

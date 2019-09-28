@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         color: R.colors.light,
         fontSize: R.fontSizes.rating,
         fontFamily: R.fonts.lightFont,
-        fontWeight: '300',
+        fontWeight: '400',
     },
 
     ratingTextGray: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         paddingBottom: R.paddings.xs,
         paddingLeft: R.paddings.xs,
         fontFamily: R.fonts.lightFont,
-        fontWeight: '300',
+        fontWeight: '400',
     }
 });
 

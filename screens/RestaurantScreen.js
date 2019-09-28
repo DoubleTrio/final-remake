@@ -1,16 +1,15 @@
 import React from 'react';
-import { Text, Button, View, ActivityIndicator, ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import ScreenContainer from '../components/presentational/ScreenContainer';
 import DismissKeyboard from '../components/presentational/DismissKeyboard';
-import store from '../redux/store';
 import PaddingWrapper from '../components/presentational/PaddingWrapper';
-import SearchBar from '../components/container/SearchBar';
 import { connect } from 'react-redux';
 import CardSectionList from '../components/container/CardSectionList';
 import R from '../styles/index';
 import { fetchRestaurantRequest } from '../redux/actions';
 import TopPaddingWrapper from '../components/presentational/TopPaddingWrapper';
+import ErrorText from '../components/presentational/ErrorText';
 
 class RestaurantScreen extends React.Component {
 
@@ -23,7 +22,7 @@ class RestaurantScreen extends React.Component {
   }
 
   static propTypes = {
-    // fetchRestaurantRequest: PropTypes.func.isRequired,
+    fetchRestaurantRequest: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
     restaurants: PropTypes.object.isRequired,
     fetchRestaurantRequest: PropTypes.func.isRequired,
@@ -35,22 +34,21 @@ class RestaurantScreen extends React.Component {
     this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType)
   }
   
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.currentLocation.name, this.props.currentLocation.name)
-    if (this.props.currentLocation.name !== nextProps.currentLocation.name || this.props.entityType !== nextProps.entityType) this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType);
-  }
+  // componentDidUpdate(prevProps) {
+  //   console.log(prevProps.currentLocation.name, this.props.currentLocation.name)
+  //   console.log(prevProps.entityType, this.props.entityType)
+  //   if (this.props.currentLocation.name !== prevProps.currentLocation.name || this.props.entityType !== prevProps.entityType) this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType);
+  // }
 
   updateSearch = q => {
     this.setState({ q })
   }
 
+  
+
   navigateToDetailsScreen = (restaurant, id) => {
     this.props.navigation.navigate('Details', { restaurant, id });
   }
-
-  // getStore = () => {
-  //   console.log(store.getState());
-  // }
   
   render() {
     const { restaurants } = this.props;
@@ -61,26 +59,19 @@ class RestaurantScreen extends React.Component {
         <ScreenContainer>
         <ScrollView>
           <PaddingWrapper>
-            {/* <Button onPress={this.getStore} title={'try'}/> */}
-            {/* <TopPaddingWrapper>
-              <SearchBar updateSearch={this.updateSearch} fetchFunc={this.fetchRestaurants} q={this.state.q}/>
-            </TopPaddingWrapper> */}
+            <TopPaddingWrapper>
             {waiting && (
-              <TopPaddingWrapper>
                 <ActivityIndicator size="large" color={R.colors.secondary}/>
-              </TopPaddingWrapper>
             )}
 
-            {error && 
-              <Text>Error while loading data</Text>
-            }
+            {error && (
+                <ErrorText text={error}/>
+            )}
 
             {success && data.length >= 1 && (
-              <TopPaddingWrapper>
                 <CardSectionList navigateToDetailsScreen={this.navigateToDetailsScreen} rawData={data} />
-              </TopPaddingWrapper>
             )}
-            
+            </TopPaddingWrapper>
           </PaddingWrapper>
           </ScrollView>
         </ScreenContainer>

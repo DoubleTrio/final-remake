@@ -21,9 +21,13 @@ import fetchLocationsAsync from '../calls/locations';
 function* fetchRestaurantDataSaga(action) {
   try {
     const data = yield call(fetchRestuarantsAsync, action.payload.location, action.payload.entityType);
+    if (typeof data === 'string') {
+      yield put({ type: FETCH_RESTAURANTS_FAILURE, payload: data })
+      return false;
+    }
     yield put({ type: FETCH_RESTAURANTS_SUCCESS, payload: data });
   } catch (error) {
-    yield put({ type: FETCH_RESTAURANTS_FAILURE, payload: error });
+    yield put({ type: FETCH_RESTAURANTS_FAILURE, payload: 'Error while fetching data' });
     console.log(error)
   }
 }
@@ -33,7 +37,7 @@ function* fetchLocationDataSaga(action) {
     const data = yield call(fetchLocationsAsync, action.payload);
     yield put({ type: LOCATION_SEARCH_SUCCESS, payload: data });
   } catch (error) {
-    yield put({ type: LOCATION_SEARCH_FAILURE, payload: error });
+    yield put({ type: LOCATION_SEARCH_FAILURE, payload: 'Error while fetching locations' });
     console.log(error)
   }
 }

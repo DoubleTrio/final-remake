@@ -11,5 +11,6 @@ export default Colors = {
         darkened: 'rgba(0, 0, 0, 0.5)',
         starGrey: '#DBDBDD',
         starBlue: '#01B0F1',
+        error: '#D8000C',
     },
 };

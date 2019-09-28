@@ -16,6 +16,8 @@ PaddingWrapper.Proptypes = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: R.paddings.m,
+    width: '100%',
+    height: '100%',
   },
 });
 
