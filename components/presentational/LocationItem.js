@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 
   bolded: {
-    fontSize: R.fontSizes.s,
+    fontSize: R.fontSizes.ms,
     fontWeight: 'bold',
   },
 
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   greyed: {
-    fontSize: R.fontSizes.s,
+    fontSize: R.fontSizes.ms,
     color: R.colors.border,
   },
 });

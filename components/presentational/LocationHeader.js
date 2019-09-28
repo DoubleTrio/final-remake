@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import R from '../../styles/index';
 import PaddingWrapper from './PaddingWrapper';
+import Dash from './Dash';
 
 class LocationHeader extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -10,14 +11,14 @@ class LocationHeader extends React.Component {
     }
 
     render() {
-        const {locationName, toggleSearch} = this.props;
+        const { locationName, toggleSearch } = this.props;
         return (
             <View style={styles.container}>
                 <PaddingWrapper>
                     <TouchableOpacity activeOpacity={0.5} onPress={toggleSearch}>
                         <Text style={styles.locationText}>{locationName}</Text>
                     </TouchableOpacity>
-                    <View style={styles.dash}/>
+                    <Dash />
                 </PaddingWrapper>
             </View>
         );
@@ -37,12 +38,6 @@ const styles = StyleSheet.create({
         paddingVertical: R.paddings.s,
         borderColor: R.colors.border,
         borderBottomWidth: R.sBorder * 2 
-    },
-
-    dash: {
-        borderTopWidth: R.sBorder,
-        width: '100%',
-        height: 0.1,
     },
 
     locationText: {

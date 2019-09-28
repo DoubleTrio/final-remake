@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Animated, ActivityIndicator, TouchableOpacity } from 'react-native';
 import ScreenContainer from '../components/presentational/ScreenContainer';
 import DismissKeyboard from '../components/presentational/DismissKeyboard';
 import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ import EntityIconList from '../components/container/EntityIconList';
 
 let isHidden = true
 
-class CollectionsScreen extends React.Component {
+class FiltersScreen extends React.Component {
   state = {
     animatedValue: new Animated.Value(R.popUpView),
     selectedLocation: {
@@ -37,7 +37,7 @@ class CollectionsScreen extends React.Component {
   }
 
   static navigationOptions = {
-    headerTitle: 'Collections',
+    headerTitle: 'Filters',
   }
 
   updateSearch = q => {
@@ -160,4 +160,4 @@ mapStateToProps = state => ({
   setLocation: state.currentLocation,
 })
 
-export default connect(mapStateToProps, { fetchLocationsRequest, updateCurrentLocation, clearLocationResults })(CollectionsScreen)
+export default connect(mapStateToProps, { fetchLocationsRequest, updateCurrentLocation, clearLocationResults })(FiltersScreen)

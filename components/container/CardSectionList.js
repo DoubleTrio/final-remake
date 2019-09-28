@@ -1,17 +1,15 @@
 import React from 'react';
-import { SectionList, Text, ActivityIndicator, Keyboard } from 'react-native';
+import { SectionList, Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import CardFlatList from './CardFlatList';
-
-const findIndex = (current, max) => {
-    if (max < 20) return 0
-    const additionalIndex = current + 20
-    const difference = max - additionalIndex
-    return difference < 20 ? difference : 20
-}
+import R from '../../styles/index';
+import Dash from '../presentational/Dash';
 
 const _renderHeader = ({section}) => ( 
-  <Text>{section.title}</Text>
+  <View style={styles.pv}>
+    <Text style={styles.sectionTitleText}>{section.title}</Text>
+    <Dash />
+  </View>
 )
 
 const _keyExtractor = item => item.id
@@ -68,3 +66,16 @@ class CardSectionList extends React.Component {
 }
 
 export default CardSectionList;
+
+const styles = StyleSheet.create({
+    sectionTitleText: {
+        fontSize: R.fontSizes.header,
+        fontFamily: R.fonts.lightFont,
+        marginBottom: R.paddings.xs,
+    },
+
+    pv: {
+        marginHorizontal: R.paddings.m, 
+        marginBottom: R.paddings.m,
+    },
+})

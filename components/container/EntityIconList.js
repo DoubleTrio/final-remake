@@ -92,6 +92,6 @@ class EntityIconList extends React.Component {
 
 const mapStateToProps = state => ({
     entityType: state.entityType,
-})
+});
 
 export default connect(mapStateToProps, { updateEntityType })(EntityIconList);

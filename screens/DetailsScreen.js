@@ -6,6 +6,7 @@ import PaddingWrapper from '../components/presentational/PaddingWrapper';
 import GalleryList from '../components/presentational/GalleryList';
 import { connect } from 'react-redux';
 import ReviewsList from '../components/presentational/ReviewsList';
+import RestaurantDetails from '../components/presentational/RestaurantDetails';
 
 class DetailsScreen extends React.Component {
   
@@ -22,8 +23,7 @@ class DetailsScreen extends React.Component {
     const { restaurantData, navigation } = this.props;
     const selectedId = navigation.getParam('id');
     const restuarantById = restaurantData.data.find(restuarant => restuarant.id === selectedId);
-    const { cardData, extendedData } = restuarantById;
-    let { photos, reviews } = extendedData;
+    const { cardData, extendedData, photos, reviews } = restuarantById;
     return (
       <ScrollView>
         <ScreenContainer>
@@ -31,6 +31,7 @@ class DetailsScreen extends React.Component {
             {photos.length >= 1 && (
               <GalleryList photos={photos}/>
             )}
+            <RestaurantDetails cardData={cardData} extendedData={extendedData} />
             {reviews.length >= 1 && (
               <ReviewsList reviews={reviews}/>
             )}

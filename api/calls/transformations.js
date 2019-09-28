@@ -19,7 +19,7 @@ const transformPhotoData = ({ photo }) => {
 const transformReviewData = ({ review }) => {
   const { rating, id, rating_color, review_text, review_time_friendly, user, likes } = review;
   return {
-    rating,
+    rating: rating.toFixed(1),
     id: `${id}`,
     ratingColor: `#${rating_color}`,
     reviewText: review_text,
@@ -60,13 +60,14 @@ export const transformRestaurantData = ({ restaurant }) => {
   }
 
   const { rating_color, aggregate_rating } = user_rating;
-  const { city, locality } = location;
+  const { locality, address } = location;
   return {
     id,
     locality,
+    photos,
+    reviews: all_reviews.reviews.map(transformReviewData),
     cardData: {
         name,
-        city,
         cuisines,
         thumb,
         color: `#${rating_color}`,
@@ -74,20 +75,18 @@ export const transformRestaurantData = ({ restaurant }) => {
         priceRange: price_range,
     },
     extendedData: {
-        // userRating: user_rating,
-        reviews: all_reviews.reviews.map(transformReviewData),
-        // phoneNumbers: phone_numbers,
-        // averageCostForTwo: average_cost_for_two,
-        // hasOnlineDelivery: has_online_delivery,
-        // isDeliveringNow: is_delivering_now,
-        // hasTableBooking: has_table_booking,
-        // tableReservationSupported: is_table_reservation_supported,
-        // location,
-        // highlights,
-        photos,
-        // timings,
-        // currency,
-        // offers,
+        userRating: user_rating,
+        phoneNumbers: phone_numbers,
+        averageCostForTwo: average_cost_for_two,
+        hasOnlineDelivery: has_online_delivery,
+        isDeliveringNow: is_delivering_now,
+        hasTableBooking: has_table_booking,
+        tableReservationSupported: is_table_reservation_supported,
+        highlights,
+        timings,
+        currency,
+        offers,
+        address,
     }
   };
 };

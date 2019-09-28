@@ -19,21 +19,22 @@ export default ReviewList = ({ reviews }) => {
     )
 
     return (
-        <TopPaddingWrapper>
-            <SectionContainer>
-                <SectionHeaderContainer>
-                    <SectionHeaderText text={'Reviews'}/>
-                </SectionHeaderContainer>
-                
-                <FlatList 
-                    data={reviews}
-                    renderItem={_renderItem}
-                    keyExtractor={item => item.id}
-                    contentContainerStyle={styles.pb}
-                    ItemSeparatorComponent={_itemSeperator}
-                />
-            </SectionContainer>
-        </TopPaddingWrapper>
+        <View style={styles.mb}>
+            <TopPaddingWrapper>
+                <SectionContainer>
+                    <SectionHeaderContainer>
+                        <SectionHeaderText text={'Reviews'}/>
+                    </SectionHeaderContainer>
+                    <FlatList 
+                        data={reviews}
+                        renderItem={_renderItem}
+                        keyExtractor={item => item.id}
+                        contentContainerStyle={styles.pb}
+                        ItemSeparatorComponent={_itemSeperator}
+                    />
+                </SectionContainer>
+            </TopPaddingWrapper>
+        </View>
     );
 };
 
@@ -44,12 +45,11 @@ ReviewList.propTypes = {
 const styles = StyleSheet.create({
     itemSeperator: {
         backgroundColor: R.colors.bg, 
-        height: R.sBorder,
+        height: R.sBorder * 2,
         width: '100%',
     },
-    
-    pb: {
-        paddingBottom: 50,
-        marginBottom: 200,
+
+    mb: {
+        marginBottom: R.paddings.l,
     },
 });

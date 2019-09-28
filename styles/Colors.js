@@ -9,5 +9,7 @@ export default Colors = {
         selected: '#4BB543',
         confirm: '#488214',
         darkened: 'rgba(0, 0, 0, 0.5)',
+        starGrey: '#DBDBDD',
+        starBlue: '#01B0F1',
     },
 };

@@ -4,21 +4,20 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Provider } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import SearchScreen from './screens/SearchScreen';
+import RestaurantScreen from './screens/RestaurantScreen';
 import DetailsScreen from './screens/DetailsScreen';
-import CollectionsScreen from './screens/CollectionsScreen';
+import FiltersScreen from './screens/FiltersScreen';
 import R from './styles/index';
 import store from './redux/store';
 import * as Font from 'expo-font';
 
 const StackSearchNavigator = createAppContainer(createStackNavigator(
   {
-    Search: SearchScreen,
+    Restaurants: RestaurantScreen,
     Details: DetailsScreen,
   },
   {
-    initialRouteName: 'Search',
+    initialRouteName: 'Restaurants',
     defaultNavigationOptions: {
       headerTintColor: R.colors.primary,
       headerStyle: {
@@ -34,8 +33,8 @@ const StackSearchNavigator = createAppContainer(createStackNavigator(
 StackSearchNavigator.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
     <Ionicons
-      name="ios-search"
-      size={R.iconSize}
+      name='md-restaurant'
+      size={R.iconSize * 1.3}
       color={tintColor}
     />
   ),
@@ -43,7 +42,7 @@ StackSearchNavigator.navigationOptions = {
 
 const StackFilterNavigator = createAppContainer(createStackNavigator(
   {
-    FilterStack: CollectionsScreen,
+    FilterStack: FiltersScreen,
   },
   {
     defaultNavigationOptions: {
@@ -60,9 +59,9 @@ const StackFilterNavigator = createAppContainer(createStackNavigator(
 
 StackFilterNavigator.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
-    <MaterialIcons
-      name="collections"
-      size={R.iconSize}
+    <Ionicons
+      name="ios-options"
+      size={R.iconSize * 1.3}
       color={tintColor}
     />
   ),
@@ -70,17 +69,21 @@ StackFilterNavigator.navigationOptions = {
 
 const AppContainer = createAppContainer(createBottomTabNavigator(
   {
-    Search: StackSearchNavigator,
-    Collections: StackFilterNavigator,
+    Restaurants: StackSearchNavigator,
+    Filters: StackFilterNavigator,
   },
   {
-    initialRouteName: 'Collections',
+    initialRouteName: 'Filters',
     tabBarOptions: {
       activeTintColor: R.colors.primary,
       inactiveTintColor: R.colors.light,
       style: {
         backgroundColor: R.colors.secondary,
       },
+      keyboardHidesTabBar: false,
+      swipeEnabled: false,
+      animationEnabled: false,
+      initialLayout: undefined,
     },
   },
 ));

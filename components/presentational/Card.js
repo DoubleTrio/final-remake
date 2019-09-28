@@ -13,7 +13,7 @@ import Price from './Price';
 
 const Card = ({ cardData, navigateToDetailsScreen, id }) => {
   const {
-    city, color, cuisines, priceRange, rating, thumb, name,
+    color, cuisines, priceRange, rating, thumb, name,
   } = cardData;
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.5} onPress={() => navigateToDetailsScreen(name, id)}>
@@ -33,7 +33,6 @@ const Card = ({ cardData, navigateToDetailsScreen, id }) => {
         </View>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.smallFont}>{city}</Text>
         <Price p={priceRange} />
         <Text style={styles.smallFont}>{cuisines || 'No cuisines found'}</Text>
       </View>
@@ -43,7 +42,6 @@ const Card = ({ cardData, navigateToDetailsScreen, id }) => {
 
 Card.propTypes = {
   cardData: PropTypes.exact({
-    city: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     cuisines: PropTypes.string.isRequired,
     priceRange: PropTypes.number.isRequired,

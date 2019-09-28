@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         aspectRatio: 1/1, 
         justifyContent: 'center', 
         borderRadius: R.roundBorderRadius,
+        marginBottom: R.paddings.s,
     },
 
     border: {
@@ -51,5 +52,6 @@ const styles = StyleSheet.create({
 
     centerText: {
         textAlign: 'center',
+        fontSize: R.fontSizes.ms,
     },
 });

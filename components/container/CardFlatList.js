@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Card from '../presentational/Card';
 
@@ -18,9 +18,16 @@ class CardFlatList extends React.Component {
             keyExtractor={item => item.id}
             showsHorizontalScrollIndicator={false}
             numColumns={2}
+            columnWrapperStyle={styles.row}
           />
         );
     }
 };
+
+const styles = StyleSheet.create({
+  row: {
+      justifyContent: 'space-around',
+  },
+});
 
 export default CardFlatList;
