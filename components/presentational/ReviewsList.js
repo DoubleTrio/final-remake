@@ -1,12 +1,12 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
+import R from '../../styles/index';
 import SectionHeaderContainer from './SectionHeaderContainer';
 import SectionHeaderText from './SectionHeaderText';
 import SectionContainer from './SectionContainer';
 import ReviewItem from './ReviewItem';
 import TopPaddingWrapper from './TopPaddingWrapper';
-import R from '../../styles/index';
 
 const itemSeperator = () => (
   <View style={styles.itemSeperator} />

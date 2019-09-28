@@ -1,9 +1,9 @@
 import React from 'react';
 import { SectionList, Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
-import CardFlatList from './CardFlatList';
 import R from '../../styles/index';
-import Dash from '../presentational/Dash';
+import CardFlatList from './CardFlatList';
+import Dash from './Dash';
 
 const _renderHeader = ({section}) => ( 
   <View style={styles.pv}>
@@ -48,7 +48,7 @@ class CardSectionList extends React.Component {
           title: restaurant,
           id: index,
         }));
-        console.log('rendered')
+        
         return (
             <SectionList 
                 onEndReachedThreshold={0.01}

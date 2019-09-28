@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import Row from './Row';
 import R from '../../styles/index';
+import Row from './Row';
 
 const renderPrice = (p) => {
   const dollars = [];
@@ -15,8 +15,7 @@ const renderPrice = (p) => {
 const Price = ({ p }) => (
   <Row>
     <Text style={styles.fs}>
-Cost:
-      {renderPrice(p)}
+        Cost: {renderPrice(p)}
     </Text>
   </Row>
 );

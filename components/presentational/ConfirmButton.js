@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import R from '../../styles/index';
 import { moderateScale } from '../../styles/scale';
+import R from '../../styles/index';
 
 export default ConfirmButton = ({ isActive, onConfirm }) => (
   <TouchableOpacity

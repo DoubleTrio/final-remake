@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import Card from '../presentational/Card';
+import Card from './Card';
 
 class CardFlatList extends React.Component {
     static propTypes = {

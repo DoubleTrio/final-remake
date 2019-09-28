@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View, StyleSheet, Image, Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Row from './Row';
+import PropTypes from 'prop-types';
 import R from '../../styles/index';
+import Row from './Row';
 
 const renderStars = (rating) => {
   const ceilRating = Math.ceil(rating);

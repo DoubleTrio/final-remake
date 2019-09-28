@@ -1,12 +1,12 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import ScreenContainer from '../components/presentational/ScreenContainer';
-import PropTypes from 'prop-types';
-import PaddingWrapper from '../components/presentational/PaddingWrapper';
-import GalleryList from '../components/presentational/GalleryList';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ReviewsList from '../components/presentational/ReviewsList';
 import RestaurantDetails from '../components/presentational/RestaurantDetails';
+import PaddingWrapper from '../components/presentational/PaddingWrapper';
+import GalleryList from '../components/presentational/GalleryList';
+import ScreenContainer from '../components/presentational/ScreenContainer';
 
 class DetailsScreen extends React.Component {
   

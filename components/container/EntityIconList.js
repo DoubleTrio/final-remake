@@ -1,14 +1,14 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateEntityType } from '../../redux/actions';
 import R from '../../styles/index';
 import EntityTypeIcon from '../presentational/EntityTypeIcon';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import TopPaddingWrapper from '../presentational/TopPaddingWrapper';
-import { connect } from 'react-redux';
-import { updateEntityType } from '../../redux/actions';
 
 const styles = StyleSheet.create({
     container: {

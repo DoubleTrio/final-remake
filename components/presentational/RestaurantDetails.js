@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Feather from 'react-native-vector-icons/Feather';
+import { moderateScale } from '../../styles/scale';
+import R from '../../styles/index';
 import SectionHeaderContainer from './SectionHeaderContainer';
 import SectionHeaderText from './SectionHeaderText';
 import SectionContainer from './SectionContainer';
 import TopPaddingWrapper from './TopPaddingWrapper';
-import R from '../../styles/index';
-import { moderateScale } from '../../styles/scale';
 import Row from './Row';
 
 const RenderBoolIcon = ({ n, text }) => (
@@ -85,12 +85,11 @@ votes
               <Text style={styles.defaultFont}>{phoneNumbers || 'No phone numbers found'}</Text>
               <Text style={styles.sectionFont}>Average Cost</Text>
               <Text style={styles.defaultFont}>{currency + averageCostForTwo || 'Average cost not found'}</Text>
-
             </View>
             <View style={[styles.split, styles.pl]}>
               <Text style={styles.sectionFont}>Cuisines</Text>
               <Text style={styles.defaultFont}>{cuisines || 'No cuisines found'}</Text>
-              <Text style={styles.sectionFont}>Highlightz</Text>
+              <Text style={styles.sectionFont}>Highlights</Text>
               <Text style={styles.defaultFont}>{highlights.length >= 1 ? highlights : 'None'}</Text>
               <Text style={styles.sectionFont}>Offers</Text>
               <Text style={styles.defaultFont}>{offers.length >= 1 ? offers : 'None'}</Text>

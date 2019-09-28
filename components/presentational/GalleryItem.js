@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-  View, StyleSheet, Image, Text,
+  View, StyleSheet, Image, Text, Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import R from '../../styles/index';
+
+const { width } = Dimensions.get('window');
 
 export default GalleryItem = ({
   thumbUrl, isLast, time, isSingle,
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
   },
 
   single: {
-    width: '100%',
+    width: width - R.paddings.m * 2,
     height: R.cardWidth * 1.3,
   },
 

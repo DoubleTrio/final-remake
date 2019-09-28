@@ -73,7 +73,7 @@ const AppContainer = createAppContainer(createBottomTabNavigator(
     Filters: StackFilterNavigator,
   },
   {
-    initialRouteName: 'Filters',
+    initialRouteName: 'Restaurants',
     tabBarOptions: {
       activeTintColor: R.colors.primary,
       inactiveTintColor: R.colors.light,

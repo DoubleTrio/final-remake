@@ -1,23 +1,24 @@
 import React from 'react';
 import { StyleSheet, Animated, ActivityIndicator, TouchableOpacity } from 'react-native';
-import ScreenContainer from '../components/presentational/ScreenContainer';
-import DismissKeyboard from '../components/presentational/DismissKeyboard';
+import { fetchLocationsRequest, updateCurrentLocation, clearLocationResults } from '../redux/actions';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LocationHeader from '../components/presentational/LocationHeader';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import R from '../styles/index';
+import LocationHeader from '../components/presentational/LocationHeader';
 import LocationFlatList from '../components/presentational/LocationFlatList';
 import PaddingWrapper from '../components/presentational/PaddingWrapper';
 import SectionHeaderContainer from '../components/presentational/SectionHeaderContainer';
 import SectionHeaderText from '../components/presentational/SectionHeaderText';
-import SearchBar from '../components/container/SearchBar';
-import { fetchLocationsRequest, updateCurrentLocation, clearLocationResults } from '../redux/actions';
-import { connect } from 'react-redux';
-import TopPaddingWrapper from '../components/presentational/TopPaddingWrapper';
-import ConfirmButton from '../components/presentational/ConfirmButton';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Row from '../components/presentational/Row';
-import EntityIconList from '../components/container/EntityIconList';
+import ScreenContainer from '../components/presentational/ScreenContainer';
+import DismissKeyboard from '../components/presentational/DismissKeyboard';
 import ErrorText from '../components/presentational/ErrorText';
+import SearchBar from '../components/presentational/SearchBar';
+import Row from '../components/presentational/Row';
+import TopPaddingWrapper from '../components/presentational/TopPaddingWrapper';
+import EntityIconList from '../components/container/EntityIconList';
+import ConfirmButton from '../components/presentational/ConfirmButton';
+
 
 let isHidden = true
 

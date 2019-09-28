@@ -1,21 +1,17 @@
 import React from 'react';
-import { ActivityIndicator, ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView, Text } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchRestaurantRequest } from '../redux/actions';
+import R from '../styles/index';
+import CardSectionList from '../components/presentational/CardSectionList';
 import ScreenContainer from '../components/presentational/ScreenContainer';
 import DismissKeyboard from '../components/presentational/DismissKeyboard';
 import PaddingWrapper from '../components/presentational/PaddingWrapper';
-import { connect } from 'react-redux';
-import CardSectionList from '../components/container/CardSectionList';
-import R from '../styles/index';
-import { fetchRestaurantRequest } from '../redux/actions';
 import TopPaddingWrapper from '../components/presentational/TopPaddingWrapper';
 import ErrorText from '../components/presentational/ErrorText';
 
 class RestaurantScreen extends React.Component {
-
-  state = {
-    q: ''
-  }
 
   static navigationOptions = {
     headerTitle: 'Restaurants',
@@ -29,28 +25,21 @@ class RestaurantScreen extends React.Component {
     entityType: PropTypes.string.isRequired,
     currentLocation: PropTypes.object.isRequired, 
   }
-
-  componentDidMount() {
-    this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType)
-  }
   
   componentDidUpdate(prevProps) {
     if (this.props.currentLocation.name !== prevProps.currentLocation.name 
       || this.props.entityType !== prevProps.entityType
+      && this.props.currentLocation.name !== 'None'
     ) this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType);
   }
-
-  updateSearch = q => {
-    this.setState({ q })
-  }
-
 
   navigateToDetailsScreen = (restaurant, id) => {
     this.props.navigation.navigate('Details', { restaurant, id });
   }
   
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, currentLocation } = this.props;
+    const { name } = currentLocation;
     const { data, success, waiting, error } = restaurants;
     return (
       <DismissKeyboard>

@@ -3,8 +3,8 @@ import {
   FlatList, Text, View, StyleSheet, Keyboard,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import LocationItem from './LocationItem';
 import R from '../../styles/index';
+import LocationItem from './LocationItem';
 
 const itemSeperator = () => (
   <View style={styles.itemSeperator} />

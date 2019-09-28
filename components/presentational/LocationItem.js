@@ -3,8 +3,9 @@ import {
   StyleSheet, Text, Image, View, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import R from '../../styles/index';
 import { moderateScale } from '../../styles/scale';
+import R from '../../styles/index';
+
 
 export default class LocationItem extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {

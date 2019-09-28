@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
-import R from '../../styles/index';
 import { moderateScale } from '../../styles/scale';
+import R from '../../styles/index';
 
 const SectionHeaderContainer = ({ children }) => (
     <View style={styles.container}>

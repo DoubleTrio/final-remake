@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import R from '../../styles/index';
-import { moderateScale } from '../../styles/scale';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Row from '../presentational/Row';
-import { connect } from 'react-redux';
-import { fetchRestaurantRequest } from '../../redux/actions';
+import { moderateScale } from '../../styles/scale';
+import R from '../../styles/index';
+import Row from './Row';
 
 class SearchBar extends React.Component {
   static propTypes = {
