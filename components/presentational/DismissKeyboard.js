@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 
 const dismiss = () => {
   Keyboard.dismiss();
-  console.log('clicked!')
+  console.log('clicked!');
 };
 
 const DismissKeyboard = ({ children }) => (
-  <TouchableWithoutFeedback onPress={dismiss}>    
+  <TouchableWithoutFeedback onPress={dismiss}>
     {children}
   </TouchableWithoutFeedback>
 );

@@ -1,11 +1,13 @@
-const transfromUserData = ({ foodie_color, foodie_level, name, profile_image }) => (
+const transfromUserData = ({
+  foodie_color, foodie_level, name, profile_image,
+}) => (
   {
     foodieColor: `#${foodie_color}`,
     foodieLevel: foodie_level,
     name,
     profile: profile_image,
   }
-)
+);
 
 const transformPhotoData = ({ photo }) => {
   const { friendly_time, id, thumb_url } = photo;
@@ -13,11 +15,13 @@ const transformPhotoData = ({ photo }) => {
     friendlyTime: friendly_time,
     id: `${id}`,
     thumbUrl: thumb_url,
-  }
-}
+  };
+};
 
 const transformReviewData = ({ review }) => {
-  const { rating, id, rating_color, review_text, review_time_friendly, user, likes } = review;
+  const {
+    rating, id, rating_color, review_text, review_time_friendly, user, likes,
+  } = review;
   return {
     rating: rating.toFixed(1),
     id: `${id}`,
@@ -26,14 +30,14 @@ const transformReviewData = ({ review }) => {
     reviewTime: review_time_friendly,
     user: transfromUserData(user),
     likes,
-  }
-}
+  };
+};
 
 export const transformRestaurantData = ({ restaurant }) => {
   let {
     id,
     user_rating,
-    name, 
+    name,
     location,
     highlights, thumb,
     all_reviews,
@@ -53,10 +57,8 @@ export const transformRestaurantData = ({ restaurant }) => {
 
   if (typeof photos === 'object') {
     photos = photos.map(transformPhotoData);
-  }
-
-  else {
-    photos = []
+  } else {
+    photos = [];
   }
 
   const { rating_color, aggregate_rating } = user_rating;
@@ -67,27 +69,35 @@ export const transformRestaurantData = ({ restaurant }) => {
     photos,
     reviews: all_reviews.reviews.map(transformReviewData),
     cardData: {
-        name,
-        cuisines,
-        thumb,
-        color: `#${rating_color}`,
-        rating: parseFloat(aggregate_rating).toFixed(1),
-        priceRange: price_range,
+      name,
+      cuisines,
+      thumb,
+      color: `#${rating_color}`,
+      rating: parseFloat(aggregate_rating).toFixed(1),
+      priceRange: price_range,
     },
     extendedData: {
-        userRating: user_rating,
-        phoneNumbers: phone_numbers,
-        averageCostForTwo: average_cost_for_two,
-        hasOnlineDelivery: has_online_delivery,
-        isDeliveringNow: is_delivering_now,
-        hasTableBooking: has_table_booking,
-        tableReservationSupported: is_table_reservation_supported,
-        highlights,
-        timings,
-        currency,
-        offers,
-        address,
-    }
+      userRating: user_rating,
+      phoneNumbers: phone_numbers,
+      averageCostForTwo: average_cost_for_two,
+      hasOnlineDelivery: has_online_delivery,
+      isDeliveringNow: is_delivering_now,
+      hasTableBooking: has_table_booking,
+      tableReservationSupported: is_table_reservation_supported,
+      highlights: highlights.join(', '),
+      timings,
+      currency,
+      offers: offers.join(', '),
+      address,
+    },
   };
 };
 
+export const processLocations = ({
+  country_flag_url, country_name, id, name,
+}) => ({
+  id,
+  countryFlag: country_flag_url,
+  countryName: country_name,
+  name,
+});

@@ -10,7 +10,7 @@ import RestaurantDetails from '../components/presentational/RestaurantDetails';
 
 class DetailsScreen extends React.Component {
   
-  static navigationOptions = ({navigation}) => ({
+  static navigationOptions = ({ navigation }) => ({
     headerTitle: navigation.getParam('restaurant')
   })
 
@@ -31,11 +31,10 @@ class DetailsScreen extends React.Component {
             {photos.length >= 1 && (
               <GalleryList photos={photos}/>
             )}
-            <RestaurantDetails cardData={cardData} extendedData={extendedData} />
+            <RestaurantDetails cardData={cardData} extendedData={extendedData} needsMargin={reviews.length <= 0}/>
             {reviews.length >= 1 && (
               <ReviewsList reviews={reviews}/>
             )}
-            
           </PaddingWrapper>
         </ScreenContainer>
       </ScrollView>

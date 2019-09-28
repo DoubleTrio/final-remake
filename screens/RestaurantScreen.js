@@ -34,17 +34,16 @@ class RestaurantScreen extends React.Component {
     this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType)
   }
   
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps.currentLocation.name, this.props.currentLocation.name)
-  //   console.log(prevProps.entityType, this.props.entityType)
-  //   if (this.props.currentLocation.name !== prevProps.currentLocation.name || this.props.entityType !== prevProps.entityType) this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType);
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.currentLocation.name !== prevProps.currentLocation.name 
+      || this.props.entityType !== prevProps.entityType
+    ) this.props.fetchRestaurantRequest(this.props.currentLocation.name, this.props.entityType);
+  }
 
   updateSearch = q => {
     this.setState({ q })
   }
 
-  
 
   navigateToDetailsScreen = (restaurant, id) => {
     this.props.navigation.navigate('Details', { restaurant, id });
@@ -55,35 +54,33 @@ class RestaurantScreen extends React.Component {
     const { data, success, waiting, error } = restaurants;
     return (
       <DismissKeyboard>
-
         <ScreenContainer>
-        <ScrollView>
-          <PaddingWrapper>
-            <TopPaddingWrapper>
-            {waiting && (
-                <ActivityIndicator size="large" color={R.colors.secondary}/>
-            )}
+          <ScrollView>
+            <PaddingWrapper>
+              <TopPaddingWrapper>
+                {waiting && (
+                    <ActivityIndicator size="large" color={R.colors.secondary}/>
+                )}
 
-            {error && (
-                <ErrorText text={error}/>
-            )}
-
-            {success && data.length >= 1 && (
-                <CardSectionList navigateToDetailsScreen={this.navigateToDetailsScreen} rawData={data} />
-            )}
-            </TopPaddingWrapper>
-          </PaddingWrapper>
+                {error && (
+                    <ErrorText text={error}/>
+                )}
+                {success && data.length >= 1 && (
+                    <CardSectionList navigateToDetailsScreen={this.navigateToDetailsScreen} rawData={data} />
+                )}
+              </TopPaddingWrapper>
+            </PaddingWrapper>
           </ScrollView>
         </ScreenContainer>
       </DismissKeyboard>
     );
   }
-}
+};
 
 const mapStateToProps = state => ({
   restaurants: state.restaurantData,
   entityType: state.entityType,
   currentLocation: state.currentLocation,
-})
+});
 
-export default connect(mapStateToProps, { fetchRestaurantRequest })(RestaurantScreen)
+export default connect(mapStateToProps, { fetchRestaurantRequest })(RestaurantScreen);

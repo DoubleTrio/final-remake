@@ -2,7 +2,6 @@ import { View, StyleSheet } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
 import R from '../../styles/index';
-import CenterContainer from './CenterContainer';
 import { moderateScale } from '../../styles/scale';
 
 const SectionHeaderContainer = ({ children }) => (

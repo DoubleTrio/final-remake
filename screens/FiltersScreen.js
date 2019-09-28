@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Animated, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Animated, ActivityIndicator, TouchableOpacity } from 'react-native';
 import ScreenContainer from '../components/presentational/ScreenContainer';
 import DismissKeyboard from '../components/presentational/DismissKeyboard';
 import PropTypes from 'prop-types';

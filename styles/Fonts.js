@@ -1,6 +1,6 @@
 export default Fonts = {
-    fonts: {
-        normalFont: 'ralewayBlack',
-        lightFont: 'ralewayLight',
-    },
+  fonts: {
+    normalFont: 'ralewayBlack',
+    lightFont: 'ralewayLight',
+  },
 };

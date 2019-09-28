@@ -14,12 +14,12 @@ SectionContainer.Proptypes = {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: 'auto',
-        backgroundColor: R.colors.light,
-        borderWidth: R.sBorder,
-    },
+  container: {
+    width: '100%',
+    height: 'auto',
+    backgroundColor: R.colors.light,
+    borderWidth: R.sBorder,
+  },
 });
 
 export default SectionContainer;

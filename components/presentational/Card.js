@@ -4,41 +4,47 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { moderateScale } from '../../styles/scale';
 import R from '../../styles/index';
 import Row from './Row';
 import ThumbImage from './ThumbImage';
 import Price from './Price';
 
 
-const Card = ({ cardData, navigateToDetailsScreen, id }) => {
-  const {
-    color, cuisines, priceRange, rating, thumb, name,
-  } = cardData;
-  return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.5} onPress={() => navigateToDetailsScreen(name, id)}>
-      <View style={styles.imageContainer}>
-        <ThumbImage thumbUrl={thumb} />
-        <View style={[styles.ratingContainer, { backgroundColor: color }]}>
-          <Row>
-            <Text style={styles.headerText}>{rating || 'NA'}</Text>
-            <Ionicons
-              name="md-star"
-              style={styles.icon}
-            />
-          </Row>
+export class Card extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.id !== this.props.id;
+  }
+
+  render() {
+    const { cardData, navigateToDetailsScreen, id } = this.props;
+    const {
+      color, cuisines, priceRange, rating, thumb, name,
+    } = cardData;
+    return (
+      <TouchableOpacity style={styles.container} activeOpacity={0.5} onPress={() => navigateToDetailsScreen(name, id)}>
+        <View style={styles.imageContainer}>
+          <ThumbImage thumbUrl={thumb} />
+          <View style={[styles.ratingContainer, { backgroundColor: color }]}>
+            <Row>
+              <Text style={styles.headerText}>{rating || 'NA'}</Text>
+              <Ionicons
+                name="md-star"
+                style={styles.icon}
+              />
+            </Row>
+          </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.headerText}>{name || 'NA'}</Text>
+          </View>
         </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.headerText}>{name || 'NA'}</Text>
+        <View style={styles.infoContainer}>
+          <Price p={priceRange} />
+          <Text style={styles.smallFont}>{cuisines || 'No cuisines found'}</Text>
         </View>
-      </View>
-      <View style={styles.infoContainer}>
-        <Price p={priceRange} />
-        <Text style={styles.smallFont}>{cuisines || 'No cuisines found'}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
+      </TouchableOpacity>
+    );
+  }
+}
 
 Card.propTypes = {
   cardData: PropTypes.exact({
@@ -68,10 +74,11 @@ const styles = StyleSheet.create({
   },
 
   smallFont: {
-    fontSize: R.fontSizes.s,
+    fontSize: R.fontSizes.ms,
     paddingVertical: R.paddings.xs,
+    fontFamily: R.fonts.lightFont,
   },
-  
+
   imageContainer: {
     aspectRatio: 1 / 1,
     width: 'auto',
@@ -109,13 +116,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: R.colors.darkened,
     alignSelf: 'flex-end',
-    paddingHorizontal: R.paddings.xs,
+    paddingHorizontal: R.paddings.s,
     position: 'absolute',
     width: '100%',
   },
 
   infoContainer: {
-    paddingHorizontal: R.paddings.xs,
+    padding: R.paddings.s,
     borderTopColor: R.colors.border,
     borderTopWidth: R.sBorder,
   },

@@ -4,9 +4,9 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 const Row = ({ children }) => (
-  <View style={styles.r}>    
+  <View style={styles.r}>
     {children}
-  </View> 
+  </View>
 );
 
 Row.Proptypes = {
@@ -14,9 +14,9 @@ Row.Proptypes = {
 };
 
 const styles = StyleSheet.create({
-    r: {
-        flexDirection: 'row',
-    },
+  r: {
+    flexDirection: 'row',
+  },
 });
 
 export default Row;

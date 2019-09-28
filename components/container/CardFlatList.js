@@ -8,7 +8,7 @@ class CardFlatList extends React.Component {
         data: PropTypes.array.isRequired,
         navigateToDetailsScreen: PropTypes.func.isRequired,
     }
-
+    
     render() {
         const { data, navigateToDetailsScreen } = this.props;
         return (

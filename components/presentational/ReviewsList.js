@@ -8,48 +8,46 @@ import ReviewItem from './ReviewItem';
 import TopPaddingWrapper from './TopPaddingWrapper';
 import R from '../../styles/index';
 
-const _itemSeperator = () => (
-    <View style={styles.itemSeperator}></View>
-)
+const itemSeperator = () => (
+  <View style={styles.itemSeperator} />
+);
 
 export default ReviewList = ({ reviews }) => {
+  const renderItem = ({ item }) => (
+    <ReviewItem {...item} />
+  );
 
-    const _renderItem = ({item}) => (
-        <ReviewItem {...item}/>
-    )
-
-    return (
-        <View style={styles.mb}>
-            <TopPaddingWrapper>
-                <SectionContainer>
-                    <SectionHeaderContainer>
-                        <SectionHeaderText text={'Reviews'}/>
-                    </SectionHeaderContainer>
-                    <FlatList 
-                        data={reviews}
-                        renderItem={_renderItem}
-                        keyExtractor={item => item.id}
-                        contentContainerStyle={styles.pb}
-                        ItemSeparatorComponent={_itemSeperator}
-                    />
-                </SectionContainer>
-            </TopPaddingWrapper>
-        </View>
-    );
+  return (
+    <View style={styles.mb}>
+      <TopPaddingWrapper>
+        <SectionContainer>
+          <SectionHeaderContainer>
+            <SectionHeaderText text="Reviews" />
+          </SectionHeaderContainer>
+          <FlatList
+            data={reviews}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            ItemSeparatorComponent={itemSeperator}
+          />
+        </SectionContainer>
+      </TopPaddingWrapper>
+    </View>
+  );
 };
 
 ReviewList.propTypes = {
-    reviews: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({
-    itemSeperator: {
-        backgroundColor: R.colors.bg, 
-        height: R.sBorder * 2,
-        width: '100%',
-    },
+  itemSeperator: {
+    backgroundColor: R.colors.bg,
+    height: R.sBorder * 2,
+    width: '100%',
+  },
 
-    mb: {
-        marginBottom: R.paddings.l,
-    },
+  mb: {
+    marginBottom: R.paddings.l,
+  },
 });
